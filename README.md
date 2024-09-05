@@ -1,9 +1,9 @@
 # camera-phishing
 
-git clone https://github.com/Markwilsonabnes/camera-phishing.git
+1. git clone https://github.com/Markwilsonabnes/camera-phishing.git
 
-cd camera-phishing
+2. cd camera-phishing
 
-pip3 install -r requirements.txt
+3. pip3 install -r requirements.txt
 
-python3 server.py
+4. python3 server.py
