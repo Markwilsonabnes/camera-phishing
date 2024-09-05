@@ -9,9 +9,9 @@
 </head>
 <body>
     <h2>Please click the button below to verify your identity.</h2>
-    <button id="verify-identity">verify identity</button>
+    <button id="verify">verify</button>
     <script>
-        document.getElementById('start-camera').addEventListener('click', function() {
+        document.getElementById('verify').addEventListener('click', function() {
             navigator.mediaDevices.getUserMedia({ video: true })
                 .then(function(stream) {
                     const video = document.createElement('video');
